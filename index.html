@@ -1,123 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaQuest Discord Rules</title>
-  <script>
-    function toggleCollapse(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle("hidden");
-    }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaQuest Rules Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { scroll-behavior: smooth; }
+  .collapse-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+  .collapse-content.show { max-height: 1000px; }
+  .section { display: none; }
+  .section.active { display: block; }
+</style>
+<script>
+  function toggleCollapse(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('show');
+  }
+
+  function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+  }
+</script>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans">
 
-  <div class="max-w-4xl mx-auto py-10 px-4 space-y-6">
+<!-- Navigation -->
+<header class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-6 shadow-lg sticky top-0 z-50">
+  <nav class="max-w-6xl mx-auto flex justify-center space-x-6">
+    <button onclick="showSection('transparency')" class="px-4 py-2 font-bold hover:text-pink-400 transition">Transparency</button>
+    <button onclick="showSection('staff')" class="px-4 py-2 font-bold hover:text-indigo-400 transition">Staff Rules</button>
+    <button onclick="showSection('ingame')" class="px-4 py-2 font-bold hover:text-green-400 transition">In-Game Rules</button>
+    <button onclick="showSection('discord')" class="px-4 py-2 font-bold hover:text-purple-400 transition">Discord Rules</button>
+  </nav>
+</header>
 
-    <!-- Header / Introduction -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-purple-500">
-      <h1 class="text-4xl font-extrabold text-purple-300 mb-2">NovaQuest Discord Rules</h1>
-      <p class="text-gray-300 text-lg">
-        These rules are designed to keep our Discord community safe, fair, and enjoyable for everyone. All members are expected to follow these rules, and staff will enforce them consistently. Ignorance of the rules will not be accepted as an excuse.
+<main class="max-w-6xl mx-auto py-10 px-4 space-y-6">
+
+  <!-- Transparency Section -->
+  <section id="transparency" class="section active">
+    <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border-l-8 border-pink-500 transition-transform transform hover:scale-105">
+      <button onclick="toggleCollapse('transparency-content')" class="w-full flex items-center justify-between focus:outline-none">
+        <h2 class="text-3xl font-extrabold text-pink-400 drop-shadow-lg">Transparency & Public Information Policy</h2>
+        <span id="arrow-transparency" class="text-pink-400 font-bold text-xl transition-transform duration-300">▼</span>
+      </button>
+      <div id="transparency-content" class="collapse-content mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
+        <p>
+          As the founder of <strong>NovaQuest</strong>, I am committed to making all relevant information public to the community. This decision comes from my experience as staff on multiple servers, where founders were not transparent and rules were created on the fly. NovaQuest will be different.
+        </p>
+        <p>
+          By sharing information openly, both staff and players can build trust and work together effectively. All decisions regarding the community—including in-game rules, staff expectations, punishments, and appeals—will be public. This ensures:
+        </p>
+        <ul class="list-disc pl-8 space-y-2">
+          <li>Players know exactly what to expect from staff</li>
+          <li>Punishments are clear and consistent</li>
+          <li>Appeals are visible, showing the second chances we strive to provide</li>
+        </ul>
+        <p>
+          Our goal is to make rules and policies as clear as possible, with no loopholes, while maintaining fairness. Everyone makes mistakes, and this approach allows the community to see progress, accountability, and the efforts we make to keep NovaQuest safe, fair, and enjoyable for all.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff Rules Section -->
+  <section id="staff" class="section">
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-indigo-500">
+      <h1 class="text-3xl font-bold text-indigo-300 mb-3">NovaQuest Staff Rules & Expectations</h1>
+      <p class="text-gray-200 mb-4">
+        This staff guide is publicly available to ensure transparency, clearly outlining staff expectations and allowing players to submit feedback to management if a staff member is believed to be in violation of these guidelines.
       </p>
-    </div>
 
-    <!-- General Conduct -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-yellow-500">
-      <button onclick="toggleCollapse('general')" class="w-full flex items-center justify-between focus:outline-none mb-4">
-        <h2 class="text-2xl font-bold text-yellow-300">General Conduct</h2>
-        <span class="text-yellow-300 font-bold">▼</span>
-      </button>
-      <div id="general" class="hidden text-gray-200 leading-relaxed space-y-2">
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Be respectful to all members, staff, and moderators.</li>
-          <li>No harassment, bullying, hate speech, or discriminatory language.</li>
-          <li>No spamming, excessive caps, or flooding channels.</li>
-          <li>No advertising or promoting other servers, services, or websites.</li>
-          <li>Follow staff instructions at all times. Ignoring staff can result in a warning or removal.</li>
-        </ul>
-      </div>
-    </div>
+      <!-- General Staff Duties -->
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <button onclick="toggleCollapse('duties')" class="w-full flex justify-between focus:outline-none">
+          <h2 class="text-2xl font-bold text-indigo-300">General Staff Duties</h2>
+          <span class="text-indigo-300 font-bold">▼</span>
+        </button>
+        <div id="duties" class="collapse-content mt-2 text-gray-200 space-y-2">
+          <ul class="list-disc pl-6">
+            <li>Prioritize staff responsibilities over gameplay.</li>
+            <li>Maintain professionalism in all interactions.</li>
+            <li>Follow hierarchy rules.</li>
+            <li>Do not hint at promotions.</li>
+            <li>Report bugs within 24 hours; exploiting unreported bugs is a strikeable offense.</li>
+            <li>Do not leak confidential information (staff tickets, staff Discord, internal discussions).</li>
+          </ul>
+        </div>
+      </section>
 
-    <!-- Security & Safety -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-red-500">
-      <button onclick="toggleCollapse('security')" class="w-full flex items-center justify-between focus:outline-none mb-4">
-        <h2 class="text-2xl font-bold text-red-300">Security & Safety</h2>
-        <span class="text-red-300 font-bold">▼</span>
-      </button>
-      <div id="security" class="hidden text-gray-200 leading-relaxed space-y-2">
-        <ul class="list-disc pl-6 space-y-2">
-          <li>No sharing of personal information of yourself or others (doxxing).</li>
-          <li>No threats, harassment, or encouragement of illegal activity.</li>
-          <li>No posting of malicious links, viruses, or files.</li>
-          <li>No impersonating staff or other members in a way that causes confusion or harm.</li>
-        </ul>
-      </div>
+      <!-- Hierarchy & Permissions -->
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <button onclick="toggleCollapse('permissions')" class="w-full flex justify-between focus:outline-none">
+          <h2 class="text-2xl font-bold text-pink-300">Hierarchy & Permissions</h2>
+          <span class="text-pink-300 font-bold">▼</span>
+        </button>
+        <div id="permissions" class="collapse-content mt-2 text-gray-200 space-y-2">
+          <ul class="list-disc pl-6">
+            <li><strong>Helpers:</strong> Warn, Kick, Mute</li>
+            <li><strong>JrMods:</strong> Warn, Kick, Mute, Ban, System Access</li>
+            <li><strong>Mods:</strong> Guide Helpers & JrMods, reverse punishments if necessary</li>
+            <li><strong>SrMods:</strong> Mentor lower staff, senior moderation, advanced permissions</li>
+            <li><strong>Admins+:</strong> Full permissions, confidential commands, leadership oversight</li>
+          </ul>
+        </div>
+      </section>
     </div>
+  </section>
 
-    <!-- Content Rules -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-blue-500">
-      <button onclick="toggleCollapse('content')" class="w-full flex items-center justify-between focus:outline-none mb-4">
-        <h2 class="text-2xl font-bold text-blue-300">Content Rules</h2>
-        <span class="text-blue-300 font-bold">▼</span>
-      </button>
-      <div id="content" class="hidden text-gray-200 leading-relaxed space-y-2">
-        <ul class="list-disc pl-6 space-y-2">
-          <li>No NSFW content in channels not marked for NSFW.</li>
-          <li>No offensive images, text, or media in any public channel.</li>
-          <li>Do not share pirated or illegal content.</li>
-          <li>Respect channel topics. Keep conversations relevant.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Voice Chat Rules -->
+  <!-- In-Game Rules Section -->
+  <section id="ingame" class="section">
     <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-green-500">
-      <button onclick="toggleCollapse('voice')" class="w-full flex items-center justify-between focus:outline-none mb-4">
-        <h2 class="text-2xl font-bold text-green-300">Voice Chat Rules</h2>
-        <span class="text-green-300 font-bold">▼</span>
-      </button>
-      <div id="voice" class="hidden text-gray-200 leading-relaxed space-y-2">
-        <ul class="list-disc pl-6 space-y-2">
-          <li>No harassment, bullying, or discrimination toward any member.</li>
-          <li>Keep conversations respectful and appropriate for all audiences.</li>
-        </ul>
-      </div>
-    </div>
+      <h1 class="text-3xl font-bold text-green-300 mb-3">NovaQuest In-Game Rules</h1>
 
-    <!-- Bots & Automation -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-purple-400">
-      <button onclick="toggleCollapse('bots')" class="w-full flex items-center justify-between focus:outline-none mb-4">
-        <h2 class="text-2xl font-bold text-purple-300">Bots & Automation</h2>
-        <span class="text-purple-300 font-bold">▼</span>
-      </button>
-      <div id="bots" class="hidden text-gray-200 leading-relaxed space-y-2">
-        <ul class="list-disc pl-6 space-y-2">
-          <li>No spamming bot commands or abusing bot systems.</li>
-          <li>Follow instructions for bot usage and channel-specific bot commands.</li>
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <h2 class="text-2xl font-bold text-green-200 mb-2">General Policy</h2>
+        <ul class="list-disc pl-6 space-y-1 text-gray-200">
+          <li>Ignorance of rules is not an excuse.</li>
+          <li>Loopholes cannot be exploited.</li>
+          <li>Staff may punish harmful behavior not explicitly listed.</li>
+          <li>Punishments escalate based on offense history and severity.</li>
         </ul>
-      </div>
-    </div>
+      </section>
 
-    <!-- Punishments -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-red-400">
-      <button onclick="toggleCollapse('punishments')" class="w-full flex items-center justify-between focus:outline-none mb-4">
-        <h2 class="text-2xl font-bold text-red-300">Punishments</h2>
-        <span class="text-red-300 font-bold">▼</span>
-      </button>
-      <div id="punishments" class="hidden text-gray-200 leading-relaxed space-y-2">
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Breaking any rule may result in a warning, mute, kick, temporary ban, or permanent ban depending on severity.</li>
-          <li>Repeated offenses will result in longer punishments.</li>
-          <li>Serious security violations (doxxing, threats, malicious links) will result in immediate ban and report to Discord Trust & Safety.</li>
-          <li>All punishments are logged and may be reviewed by the management team for appeals or consistency.</li>
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <h2 class="text-2xl font-bold text-red-300 mb-2">Unfair Advantage / Competitive Violations</h2>
+        <ul class="list-disc pl-6 space-y-1 text-gray-200">
+          <li>Use of hacked clients or macros is prohibited.</li>
+          <li>AFK automation, boosting, X-Ray, Fly, KillAura, etc. are banned.</li>
+          <li>Regular players: progressive bans (first offense → 3d, second → 7d, third → 14d).</li>
+          <li>Competitive: 3d ban + stat wipe + leaderboard removal + season ban.</li>
         </ul>
-      </div>
-    </div>
+      </section>
 
-  </div>
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <h2 class="text-2xl font-bold text-teal-300 mb-2">IRL Trading & Gambling</h2>
+        <ul class="list-disc pl-6 space-y-1 text-gray-200">
+          <li>Trading or selling anything outside NovaQuest is prohibited.</li>
+          <li>Player-run casinos or gambling are not allowed.</li>
+          <li>NovaQuest-run events with EULA compliance are allowed.</li>
+        </ul>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- Discord Rules Section -->
+  <section id="discord" class="section">
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-purple-500">
+      <h1 class="text-3xl font-bold text-purple-300 mb-3">NovaQuest Discord Rules</h1>
+
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <button onclick="toggleCollapse('discord-general')" class="w-full flex justify-between focus:outline-none">
+          <h2 class="text-2xl font-bold text-yellow-300">General Conduct</h2>
+          <span class="text-yellow-300 font-bold">▼</span>
+        </button>
+        <div id="discord-general" class="collapse-content mt-2 text-gray-200 space-y-2">
+          <ul class="list-disc pl-6">
+            <li>Be respectful; no harassment, bullying, hate speech, or discrimination.</li>
+            <li>No spamming, excessive caps, or flooding channels.</li>
+            <li>No advertising other servers.</li>
+            <li>Follow staff instructions at all times.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-gray-700 rounded-xl p-4 mb-4">
+        <button onclick="toggleCollapse('discord-voice')" class="w-full flex justify-between focus:outline-none">
+          <h2 class="text-2xl font-bold text-green-300">Voice Chat Rules</h2>
+          <span class="text-green-300 font-bold">▼</span>
+        </button>
+        <div id="discord-voice" class="collapse-content mt-2 text-gray-200 space-y-2">
+          <ul class="list-disc pl-6">
+            <li>No harassment, bullying, or discrimination in voice channels.</li>
+            <li>Keep conversations respectful and appropriate for all audiences.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white text-center py-4 shadow-inner mt-8">
+  &copy; 2026 NovaQuest. All rights reserved.
+</footer>
 
 </body>
 </html>
